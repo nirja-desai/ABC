@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Melodic Animals ABC</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Lora:wght@700&family=Edu+TAS+Beginner:wght@500&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-image: url("so-white.png");
+      background-size: auto;
+      background-repeat: repeat;
+      font-family: 'Lora', serif;
+      color: #FFF;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .header-container {
+      /*background: white;*/
+      padding: 10px 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .header-image {
+      width: 100%;
+      max-width: 500px; /* Smaller header image */
+      height: auto;
+    }
+    /*.divider {
+      width: 80%;
+      max-width: 400px;
+      height: 2px;
+      background: linear-gradient(45deg, #ff7e5f, #ffb84d);
+      margin: 10px 0;
+      border-radius: 2px;
+    } */
+    .button-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 20px;
+      width: 90%;
+      max-width: 400px;
+    }
+    .button {
+      font-family: 'Roboto Slab', serif;
+      font-size: 2.5rem; /* Bigger button text */
+      font-weight: 700;
+      padding: 15px;
+      border-radius: 12px;
+      background-color: #ff7e5f;
+      color: white;
+      border: none;
+      cursor: pointer;
+      box-shadow: 4px 4px 0px rgb(255, 219, 219);
+      position: relative;
+      transition: transform 0.2s ease, background-color 0.3s ease;
+    }
+    .button:hover, .button.playing {
+      background-color: #393A96;
+      transform: scale(1.1);
+    }
+    .button:hover::after, .button.playing::after {
+      content: attr(data-tooltip);
+      font-family: 'Edu TAS Beginner', cursive;
+      position: absolute;
+      background-color: #fff;
+      color: #000000; /* Orange text */
+      padding: 6px 10px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.5rem;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+    .footer {
+      font-family: 'Edu TAS Beginner', cursive;
+      font-size: 14pt; /* Description text size */
+      color: #222;
+      margin-top: 10px;
+      max-width: 600px;
+      text-align: center;
+      line-height: 1.5;
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 10px;
+    }
+    .social-media {
+      font-size: 0.5rem;
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .social-media a {
+      text-decoration: none;
+      color: #ff7e5f; /* Matching theme color */
+      font-size: 14pt;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    .social-media a:hover {
+      color: #393A96;
+    }
+    .copyright {
+      font-size: 14px;
+      margin-top: 10px;
+      color: #666;
+    }
+
+    @media (max-width: 600px) {
+  .social-media a {
+    font-size: 0;
+  }
+  .social-media a i {
+    font-size: 20px;
+  }
+  @media (max-width: 390px) { /* iPhone 12 Pro screen width */
+  .button-container {
+    grid-template-columns: repeat(4, 1fr); /* 6 columns for better fit */
+    gap: 10px;
+    max-width: 350px;
+  }
+  .button {
+    font-size: 2rem; /* Slightly smaller text */
+    padding: 10px; /* Adjust padding */
+    border-radius: 10px;
+  }
+  .header-image {
+      width: 100%;
+      max-width: 250px; /* Smaller header image */
+      height: auto;
+    }
+
+}
+
+
+}
+  </style>
+</head>
+<body>
+  <div class="header-container">
+    <img src="header-image.png" alt="ABC Header" class="header-image">
+    <div class="divider"></div>
+  </div>
+  <div class="button-container" id="alphabet-buttons"></div>
+  <div class="footer">
+    <p>"Explore the world of letters with fun, interactive sounds. Click on each letter to hear its sound and enjoy a melodic learning experience!"</p>
+    <p>This interactive page accompanies the "Melodic Animals ABC" book, available on Amazon. Learn more about each animal and its sound as you explore the book!</p>
+    
+    
+    <div class="social-media">
+      <a href="https://www.instagram.com/kalakar" class="instagram" target="_blank">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+      <a href="https://www.nirjadesai.art" target="_blank">
+        <i class="fas fa-paint-brush"></i> Portfolio
+      </a>
+      <a href="https://www.amazon.com/Melodic-Animals-ABC-Z-instruments/dp/B0DZQ9SWL2/ref=sr_1_3?crid=1KVZ356NVRZMT&dib=eyJ2IjoiMSJ9.0Ds1pm3RRGbAj1NidEpw4PMFin3js3MjARV9cbtDcUK8DuF1U0G_B07hSOxos0OCC6Z7E3j2kq0blm1VqjQ-btgzGaeKYid3gv1L_rrOY3g.jz2lJaAveQZ-bSEmltvqO2U7f-tGL5XKLFqcKQvB9Oc&dib_tag=se&keywords=melodic+animals+abc&qid=1743429458&sprefix=melodic+abc%2Caps%2C152&sr=8-3" target="_blank">
+        <i class="fas fa-book"></i> Buy Melodic Animals ABC
+      </a>
+    </div>
+    
+    
+    <p class="copyright">© 2025 Nirja Desai. Book published by Kalakar LLC</p>
+   
+  </div>
+
+  <script>
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+    const letterDescriptions = {
+      A: { name: "Algoza", image: "images/a.png" },
+      B: { name: "Bulbul Tarang", image: "images/b.png" },
+      C: { name: "Chimta", image: "images/c.png" },
+      D: { name: "Dhol", image: "images/d.png" },
+      E: { name: "Ektara", image: "images/d.png" },
+      F: { name: "Flute (Bansuri)", image: "images/d.png" },
+      G: { name: "Ghatam", image: "images/d.png" },
+      H: { name: "Harmonium", image: "images/d.png" },
+      I: { name: "Idakka", image: "images/d.png" },
+      J: { name: "Jal Tarang", image: "images/d.png" },
+      K: { name: "Kanjira", image: "images/d.png" },
+      L: { name: "Lehra Machine", image: "images/d.png" },
+      M: { name: "Mridangam", image: "images/d.png" },
+      N: { name: "Nagara", image: "images/d.png" },
+      O: { name: "Onavillu", image: "images/d.png" },
+      P: { name: "Pungi", image: "images/d.png" },
+      Q: { name: "Quiet in Meditation", image: "images/d.png" },
+      R: { name: "Ravanhatha", image: "images/d.png" },
+      S: { name: "Sitar", image: "images/d.png" },
+      T: { name: "Tabla", image: "images/d.png" },
+      U: { name: "Udukku", image: "images/d.png" },
+      V: { name: "Vivhitra Veena", image: "images/d.png" },
+      W: { name: "Whistle", image: "images/d.png" },
+      X: { name: "Xylophone (Kastha Tarang)", image: "images/d.png" },
+      Y: { name: "Yakshagana Cymbal", image: "images/d.png" },
+      Z: { name: "Zhanj (Jhanj)", image: "images/d.png" },
+
+
+      // Add more animal descriptions here
+    };
+  
+    let playingButton = null;
+    let currentAudio = null;
+    const buttonContainer = document.getElementById('alphabet-buttons');
+    
+    letters.forEach(letter => {
+      const button = document.createElement('button');
+      button.classList.add('button');
+      button.textContent = letter;
+      button.setAttribute('data-tooltip', letterDescriptions[letter]?.name || letter);
+      button.addEventListener('click', () => toggleSound(letter, button));
+      buttonContainer.appendChild(button);
+    });
+  
+    function toggleSound(letter, button) {
+      if (currentAudio && playingButton === button) {
+        // Stop the audio if the same button is clicked
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+        button.classList.remove('playing');
+        playingButton = null;
+        currentAudio = null;
+      } else {
+        // Stop any existing audio
+        if (currentAudio) {
+          currentAudio.pause();
+          currentAudio.currentTime = 0;
+          if (playingButton) {
+            playingButton.classList.remove('playing');
+          }
+        }
+  
+        // Play the new audio
+        const audioPath = `sounds/${letter.toLowerCase()}.mp3`;
+        currentAudio = new Audio(audioPath);
+        playingButton = button;
+        button.classList.add('playing');
+  
+        currentAudio.play();
+        currentAudio.onended = () => {
+          button.classList.remove('playing');
+          playingButton = null;
+          currentAudio = null;
+        };
+      }
+    }
+  </script>
+  
+</body>
+</html>
