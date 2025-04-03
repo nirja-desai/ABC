@@ -84,21 +84,25 @@
       background-color: #393A96;
       transform: scale(1.1);
     }
-    .button:hover::after, .button.playing::after {
+    .button:hover::after, 
+    .button.playing::after {
       content: attr(data-tooltip);
       font-family: 'Edu TAS Beginner', cursive;
       position: absolute;
       background-color: #fff;
-      color: #000000; /* Orange text */
+      color: #000000; 
       padding: 6px 10px;
       border-radius: 5px;
       box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
       top: -40px;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 1.5rem;
+      font-size: 1.2rem; /* Reduce font size for smaller screens */
       font-weight: bold;
-      white-space: nowrap;
+      white-space: normal; /* Allows text to wrap */
+      word-wrap: break-word; /* Ensures text breaks */
+      max-width: 80vw; /* Limits width to prevent overflow */
+      text-align: center; /* Centers text */
     }
     .footer {
       font-family: 'Edu TAS Beginner', cursive;
